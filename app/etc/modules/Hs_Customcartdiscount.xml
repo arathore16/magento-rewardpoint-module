@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Hs
+ * @package    Hs_Customcartdiscount
+ */
+ -->
+<config>
+    <modules>
+        <Hs_Customcartdiscount>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Hs_Customcartdiscount>
+    </modules>
+</config> 

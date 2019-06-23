@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @category   Hs
+* @package    Hs_Customcartdiscount
+*/
+-->
+<config>
+    <modules>
+        <Hs_Customcartdiscount>
+            <version>1.0.10</version>
+        </Hs_Customcartdiscount>
+    </modules> 
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <customcartdiscount>
+                                            <title>Custom Cart Discount</title>
+                                        </customcartdiscount>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <global> 
+        <models>
+            <customcartdiscount>
+                <class>Hs_Customcartdiscount_Model</class>
+            </customcartdiscount>
+        </models> 
+        <helpers>
+            <customcartdiscount>
+                <class>Hs_Customcartdiscount_Helper</class>
+            </customcartdiscount>
+        </helpers>              
+    </global>   
+    <frontend>
+        <events>
+            <sales_quote_collect_totals_after>
+                <observers>
+                    <customcartdiscount>
+                        <class>customcartdiscount/observer</class>
+                        <method>setDiscount</method>
+                    </customcartdiscount>
+                </observers>
+            </sales_quote_collect_totals_after> 
+			<sales_order_place_after>
+				<observers>
+					<customcartdiscount>
+                        <class>customcartdiscount/observer</class>
+                        <method>setRemaining</method>
+                    </customcartdiscount>
+				</observers>
+			</sales_order_place_after>
+        </events> 
+    </frontend>      
+</config>

@@ -1,0 +1,38 @@
+<?php 
+if(Mage::getSingleton('customer/session')->isLoggedIn()){
+	 $customerData = Mage::getSingleton('customer/session')->getCustomer();
+         
+?>
+
+<div class="block block-layered-nav new_block">
+<div class="block-title">
+        <strong><span>Budget</span></strong>
+</div>
+<p>Your Account Balance<br>
+ <strong><?php echo $customerData->firstname." ".$customerData->lastname ?></strong></p>
+<?php
+
+
+	$reward_pt = intval($customerData->getreward_point());
+	$total_reward_value = $reward_pt * intval(Mage::getStoreConfig(Hs_Customcartdiscount_Model_Observer::XML_PATH_DISCOUNT_AMOUNT));
+  /*if($total_reward_value > floatval($quote->getGrandTotal())){
+	$discountAmount = floatval($quote->getGrandTotal());
+	 $total_remaining = ($total_reward_value - intval($quote->getGrandTotal()))/intval(Mage::getStoreConfig(self::XML_PATH_DISCOUNT_AMOUNT));
+				Mage::getSingleton('core/session')->unsRemainingReward();
+				Mage::getSingleton('core/session')->setRemainingReward($total_remaining); 
+				
+			 }else{
+				$discountAmount = $total_reward_value;
+				Mage::getSingleton('core/session')->unsRemainingReward();
+				Mage::getSingleton('core/session')->setRemainingReward(0);
+			 } 
+                       */
+	 
+     	echo "<p>$".$total_reward_value."</p>";
+      	  
+     	
+?>
+
+</div>
+<?php } ?>
+     
